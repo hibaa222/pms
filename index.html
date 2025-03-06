@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HILYSA</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Background Image -->
+        <div class="hero">
+            <img src="imgs/imgg.jpg" alt="Background" class="bg">
+            
+            <!-- Logo wrapped inside an anchor tag -->
+             <a href="index.html" class="logoLink">
+                <img src="imgs/logo.jpg" alt="Logo" class="logo">
+            </a>
+
+
+            <!-- Navigation (Vertical & Helvetica Font) -->
+            <nav>
+                <ul>
+                    <li><a href="#services">DISCOVER OUR SERVICES</a></li>
+                    <li><a href="#bookNow">BOOK NOW</a></li>
+                    <li><a href="#contact">CONTACT US</a></li>
+                    <li><a href="#login">LOGIN / SIGN UP</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hotel Name (Bottom of Image, Didot Font) -->
+            <h1 class="hotelName">HILYSA</h1>
+        </div>
+
+        <section id="services" class="fixed-text">
+            <p class="text">
+                Dive into <span class="italic-text">the ocean</span> <br>
+                <span class="shifted-line">Embrace the waves.</span>
+            </p>
+            <h2>Our Services</h2>
+
+            <div class="services-container">
+                <!-- Service 1 -->
+                <div class="service" id="s1">
+                    <div class="service-text">
+                        <h3>Luxury Spa</h3>
+                        <p>Relax and unwind with our professional spa treatments by the sea.</p>
+                    </div>
+                    <div class="service-img">
+                        <img src="imgs/spa.jpg" alt="Luxury Spa">
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service">
+                    <div class="service-text">
+                        <h3>Private Beach Access</h3>
+                        <p>Enjoy exclusive access to our pristine private beach.</p>
+                    </div>
+                    <div class="service-img">
+                        <img src="imgs/beach.jpg" alt="Private Beach">
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service">
+                    <div class="service-text">
+                        <h3>Gourmet Dining</h3>
+                        <p>Savor exquisite dishes crafted by top chefs.</p>
+                    </div>
+                    <div class="service-img">
+                        <img src="imgs/dining.jpg" alt="Gourmet Dining">
+                    </div>
+                </div>
+            </div>
+        </section>     
+              
+        <section id="bookNow">
+            <div class="bookNow-container">
+                <p id="animatedText"><span>What </span> <span>are </span> <span>you </span> <span>waiting </span> <span>for? </span><br> <span>BOOK </span> <span>NOW! </span></p>
+            </div>
+        </section>
+
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <h3>Everything you need to know</h3>
+        
+            <details>
+                <summary>What are the check-in and check-out times?</summary>
+                <p>Check-in is from 3:00 PM, and check-out is until 11:00 AM.</p>
+            </details>
+            <hr>
+        
+            <details>
+                <summary>Do you offer free Wi-Fi?</summary>
+                <p>Yes, we provide free high-speed Wi-Fi throughout the hotel.</p>
+            </details>
+            <hr>
+        
+            <details>
+                <summary>Is parking available?</summary>
+                <p>Yes, we offer free parking for all our guests.</p>
+            </details>
+        </section>
+
+        <section id="contact">
+            <h2>Any other questions?</h2>
+            <h3>Contact us</h3>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+        
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+        
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+        
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- Left Section (Address & Contact) -->
+                <div class="footer-left">
+                    <p><strong>Hilysa,</strong></p>
+                    <p>adress</p>
+                    <p>Algeria</p>
+    
+                    <p><strong>Support Service</strong></p>
+                    <p><a href="mailto:support@Hilysa.com">support@Hylisa.com</a></p>
+    
+                    <p><strong>Phone number</strong></p>
+                    <p>+21355555555</p>
+    
+                    <!-- Social Icons -->
+                    <div class="social-icons">
+                        <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                        <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+                        <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+                    </div>
+    
+                    <!-- Footer Links -->
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms & Conditions</a>
+                    </div>
+                </div>
+    
+                <!-- Right Section (Sign-Up Form) -->
+                <div class="footer-right">
+                    <h3>Stay Connected</h3>
+                    <form>
+                        <div class="input-group">
+                            <input type="text" placeholder="First Name *" required>
+                            <input type="text" placeholder="Last Name *" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" placeholder="Email *" required>
+                            <input type="text" placeholder="Country *" required>
+                        </div>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" required> I understand Hilysa personal information and have read and agree to the privacy policy.
+                            </label>
+                            <label>
+                                <input type="checkbox"> Yes, I would like to receive emails with exclusive specials and offers.
+                            </label>
+                        </div>
+                        <button type="submit">SIGN UP</button>
+                    </form>
+                </div>
+            </div>
+        </footer>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
