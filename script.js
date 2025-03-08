@@ -1,3 +1,4 @@
+//scrolling effect
 document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.querySelector("nav");
     const hotelName = document.querySelector(".hotelName");
@@ -22,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
             navbar.classList.remove("hidden");
         }
 
-        // Reset the transform when close to the top
         if (currentScrollY < 10) {
             hotelNameY = 0;
             sectionsY = 0;
@@ -38,41 +38,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
         lastScrollY = currentScrollY;
     });
-});
+}); 
 
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    let words = document.querySelectorAll("#animatedText span");
-    let delay = 350; // Milliseconds between each word appearing
-    let bookNowSection = document.getElementById("bookNow");
-
-    let observer = new IntersectionObserver(
-        (entries) => {
-            if (entries[0].isIntersecting) {
-                words.forEach((word, index) => {
-                    setTimeout(() => {
-                        word.style.opacity = 1;
-                    }, index * delay);
-                });
-                observer.disconnect(); // Ensures animation happens only once
-            }
-        },
-        { threshold: 0.5 } // Triggers when 50% of bookNow is visible
-    );
-
-    observer.observe(bookNowSection);
-});
-document.addEventListener("DOMContentLoaded", () => {
-    const questions = document.querySelectorAll(".faq-question");
-
-    questions.forEach((question) => {
-        question.addEventListener("click", () => {
-            const answer = question.nextElementSibling;
-            answer.style.display = answer.style.display === "block" ? "none" : "block";
+//mobile
+    function toggleMenu() {
+        document.getElementById("mobileNav").classList.toggle("open");
+    }
+    document.addEventListener("click", function (event) {
+        const mobileNav = document.querySelector(".mobile-nav");
+        const hamburger = document.querySelector(".hamburger");
+    
+        // Check if the clicked element is NOT inside the navbar or the hamburger
+        if (!mobileNav.contains(event.target) && !hamburger.contains(event.target)) {
+            mobileNav.classList.remove("open");
+            hamburger.classList.remove("active"); // If you have an active class
+        }
+    });
+    document.querySelectorAll(".mobile-nav a").forEach(link => {
+        link.addEventListener("click", function () {
+            document.querySelector(".mobile-nav").classList.remove("open");
+            document.querySelector(".hamburger").classList.remove("active"); // If you have an active class
         });
     });
+    
+    
+
+//smooth scrolling
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+
+//bubbles effect
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    navLinks.forEach(link => {
+        link.addEventListener("mouseenter", function () {
+            createBubblesAround(this);
+        });
+
+        link.addEventListener("mouseleave", function () {
+            removeBubbles();
+        });
+    });
+
+    function createBubblesAround(element) {
+        removeBubbles(); // Clean up old bubbles before adding new ones
+
+        const bubbleContainer = document.createElement("div");
+        bubbleContainer.classList.add("bubble-container");
+        document.body.appendChild(bubbleContainer); // Attach to body, NOT inside the element
+
+        const rect = element.getBoundingClientRect(); // Get element position
+
+        for (let i = 0; i < 15; i++) { // More bubbles for a richer effect
+            let bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+
+            let size = Math.random() * 12 + 8; // Random size between 8px and 20px
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+
+            // Position bubbles randomly around the element
+            let x = rect.left + Math.random() * rect.width;
+            let y = rect.top + Math.random() * rect.height;
+
+            bubble.style.left = `${x}px`;
+            bubble.style.top = `${y}px`;
+            bubbleContainer.appendChild(bubble);
+        }
+    }
+
+    function removeBubbles() {
+        let existingBubbles = document.querySelector(".bubble-container");
+        if (existingBubbles) {
+            existingBubbles.remove();
+        }
+    }
+});
+
+//slides
+const swiper = new Swiper('.swiper', {
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
 });
 
