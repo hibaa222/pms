@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../imgs/logos/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Sign up</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Didot&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Didot', serif ;
+        }
+        body {
+            background-image: url("../../imgs/login/F4.jpg");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 50px;
+            color:#BC6794;
+            font-size: large;
+        }
+        .form-container {
+            background-color:rgba(255, 197, 216, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 197, 216, 0.9);
+            color:#369092;
+            text-align: center;
+            width: 30vw;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #BC6794;
+            font-size: 45px;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: large;
+            color: #296d6e;
+
+        }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border: 2px solid #369092; 
+
+        }
+        .password-container {
+            position: relative;
+            width: 90%;
+            display: inline-block;
+        }
+
+        .password-container input {
+            width: 100%;
+            padding: 10px;
+            padding-right: 40px; 
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: large;
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 20px;
+            color: #369092;
+        }
+
+        
+        button {
+            width: 45%;
+            padding: 10px;
+            background-color: #BC6794;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+           font-size: large;
+           margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            color: #BC6794;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Welcome to</h1>
+        <center><img src="../../imgs/logos/logo.png" alt="hotel" width="150" height="70"></center>
+        <input type="text" id="firstName" placeholder="First name" required>
+        <input type="text" id="lastName" placeholder="Last name" required>
+        <input type="tel" id="phone" placeholder="Phone number" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Password" required>
+            <span class="toggle-password" onclick="togglePassword()">
+                <i id="eye-icon" class="fa fa-eye-slash"></i> 
+            </span>
+        </div>
+        <button onclick="signup()">Sign up</button>
+        <p>Already have an account? <a href="login.html">Log in</a></p>
+        <p id="message"></p>
+
+    </div>
+</body>
+
+<script>
+    function togglePassword() {
+        let passwordField = document.getElementById("password");
+        let eyeIcon = document.getElementById("eye-icon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.remove("fa-eye-slash"); 
+            eyeIcon.classList.add("fa-eye"); 
+        } else {
+            passwordField.type = "password";
+            eyeIcon.classList.remove("fa-eye"); 
+            eyeIcon.classList.add("fa-eye-slash");
+        }
+    }
+
+    function signup() {
+    let firstName = document.getElementById("firstName").value.trim();
+    let lastName = document.getElementById("lastName").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let messageBox = document.getElementById("message");
+
+    if (!firstName || !lastName || !phone || !email || !password) {
+        messageBox.innerHTML = "All fields are required!";
+        messageBox.style.color = "red";
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("name", firstName + " " + lastName);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("phone", phone); 
+
+    fetch("http://localhost/hilysa/api/signup.php", { 
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            messageBox.innerHTML = "Account created successfully!";
+            messageBox.style.color = "green";
+            setTimeout(() => window.location.href = "login.html", 2000); 
+        } else {
+            messageBox.innerHTML = data.message;
+            messageBox.style.color = "red";
+        }
+    })
+    .catch(error => {
+        messageBox.innerHTML = "An error occurred. Check console for details.";
+        messageBox.style.color = "red";
+        console.error(error);
+    });
+}
+
+</script>
+
+
+</html>

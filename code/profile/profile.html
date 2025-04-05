@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <li data-section="info">Info</li>
+            <li data-section="reservations">My Reservations</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="info" class="content-section">
+            <h2>Profile Info</h2>
+            <form>
+                <div class="two-column">
+                    <div>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" disabled>
+                    </div>
+                    <div>
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" disabled>
+                    </div>
+                </div>
+                
+                <div class="two-column">
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email">
+                    </div>
+                    <div>
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone">
+                    </div>
+                </div>
+        
+                <div>
+                    <label for="address">Address:</label>
+                    <textarea id="address"></textarea>
+                </div>
+        
+                <div class="password-section">
+                    <h3>Change Password</h3>
+                    <div>
+                        <label for="oldPassword">Old Password:</label>
+                        <input type="password" id="oldPassword">
+                    </div>
+                    <div>
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword">
+                    </div>
+                    <div>
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input type="password" id="confirmPassword">
+                    </div>
+                </div>
+        
+                <button id="saveProfile">Save</button>
+            </form>
+        </div>    
+        
+        <div id="reservations" class="content-section" style="display:none;">
+            <h2>My Reservations</h2>
+            <table id="reservationsTable">
+                <thead>
+                    <tr>
+                        <th>Room Type</th>
+                        <th>Status</th>
+                        <th>Period</th>
+                        <th>Payment Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here from JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+<script src="profile.js"></script>
+</body>
+</html>

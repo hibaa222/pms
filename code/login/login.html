@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../imgs/logos/logo.png">
+    <title>Login </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Didot&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Didot', serif ;
+        }
+        body {
+            font-size: large;
+            background-image: url("../../imgs/login/F4.jpg");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #BC6794;
+            padding: 50px;
+            
+        }
+        .login-container {
+           
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(255, 197, 216, 0.9);
+            text-align: center;
+            color:#369092;
+            background-color:rgba(255, 197, 216, 0.66);
+            
+        }
+        h1 {
+            margin: 0 0 20px 0;
+            color:#BC6794;
+        }
+        p a {
+          color:#BC6794;
+          text-decoration: none;
+        }
+        p{
+            padding-bottom: 15px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 20px;
+            font-size: large;
+            color: #296d6e;
+        }
+
+        input[type="text"]:focus, 
+        input[type="password"]:focus {
+            outline: none;
+            border: 2px solid #369092; 
+        }
+        button {
+            width: 45%;
+            padding: 15px 5px 15px 5px;
+            background-color: #BC6794;
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px
+        }
+        .links {
+            margin: 10px 0;
+        }
+        .links a {
+            color: #369092;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <center><img src="../../imgs/logos/logo.png" alt="hotel" width="150" height="70"></center>
+        <h1>Login to your account </h1>
+        <p>Don't have an account?</p>
+        <p><a href="signup.html">sign up here</a></p>
+        <input type="text" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="login()">LOG IN</button>
+        <div class="links">
+            <a href="#">Forgot Password?</a>
+        </div>
+        
+    </div>
+
+    <script>
+        function login() {
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+    
+            if (!email || !password) {
+                alert("Please fill in both fields.");
+                return;
+            }
+    
+            let formData = new FormData();
+            formData.append("email", email);
+            formData.append("password", password);
+    
+            fetch("http://localhost/hilysa/api/login.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Login successful!");
+                    window.location.href = "../homepage/index.html"; 
+                } else {
+                    alert(data.message); 
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Something went wrong.");
+            });
+        }
+    </script>
+    
+</body>
+</html>
