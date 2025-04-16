@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../code/homepage/styles.css">
+    <link rel="icon" type="image/x-icon" href="../../imgs/logos/logo.png">
+</head>
+<body>
+    <div id="app" class="navbar">
+        <a href="../homepage/index.html" class="logoLink">
+            <img src="../../imgs/logos/logo.png" alt="Logo" class="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="../../code/homepage/index.html#services">DISCOVER OUR SERVICES</a></li>
+                <li><a href="../../code/homepage/index.html#bookNow">BOOK NOW</a></li>
+                <li><a href="../../code/homepage/index.html#contact">CONTACT US</a></li>
+                <li>
+                    <a href="../../code/login/login.html">
+                        <img src="../../imgs/logos/login.svg" alt="Login" width="50">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="../../code/homepage/index.html#services">DISCOVER OUR SERVICES</a></li>
+                <li><a href="../../code/homepage/index.html#bookNow">BOOK NOW</a></li>
+                <li><a href="../../code/homepage/index.html#contact">CONTACT US</a></li>
+                <li>
+                    <a href="../../code/login/login.html">
+                        <img src="../../imgs/logos/login.svg" alt="Login" width="50">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div> 
+    <div class="container">
+        <div class="sidebar">
+            <h3>Looking for a specific room?</h3>
+            <ul>
+                <li><input type="checkbox" id="wifi" value="wifi"> <label for="wifi">Free Wi-Fi</label></li>
+                <li><input type="checkbox" id="breakfast" value="breakfast"> <label for="breakfast">Breakfast Included</label></li>
+                <li><input type="checkbox" id="seaview" value="seaview"> <label for="seaview">Sea View</label></li>
+                <li><input type="checkbox" id="petfriendly" value="petfriendly"> <label for="petfriendly">Pet Friendly</label></li>
+            </ul>
+    
+            <h3 >Price Range</h3>
+            <input type="range" id="price-range" min="10000" max="50000" step="5000" value="50000">
+            <p>Max Price: <span id="price-value">50000</span> DZD</p>
+    
+            <button class="apply-filters">Apply Filters</button>
+        </div>
+        <main class="main-content">
+            <div class="header">
+                <h1>Available Rooms</h1>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search rooms...">
+                    <button onclick="searchRooms()">Search</button>
+                </div>
+            </div>
+
+            <div id="rooms-container"></div>
+        </main>
+    </div>
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p><strong>Hilysa,</strong></p>
+                <p>adress</p>
+                <p>Algeria</p>
+
+                <p><strong>Support Service</strong></p>
+                <p><a href="mailto:support@Hilysa.com">support@Hylisa.com</a></p>
+
+                <p><strong>Phone number</strong></p>
+                <p>+21355555555</p>
+
+                <div class="social-icons">
+                    <a href="#"><img src="../../imgs/logos/fb.png" alt="Facebook"></a>
+                    <a href="#"><img src="../../imgs/logos/ig.png" alt="Instagram"></a>
+                    <a href="#"><img src="../../imgs/logos/li.png" alt="LinkedIn"></a>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h3>Contact Us</h3>
+                <form>
+                    <div class="input-group">
+                        <input type="text" placeholder="First Name *" required>
+                        <input type="text" placeholder="Last Name *" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email *" required>
+                        <input type="text" placeholder="Country *" required>
+                    </div>
+                    <button type="submit">SEND</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+    <p class="rights-reserved">2025 © Hilysa. All rights reserved.</p>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+</body>
+</html>
