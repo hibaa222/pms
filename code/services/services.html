@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../homepage/styles.css">
     <link rel="icon" type="image/x-icon" href="../../imgs/logos/logo.png">
 </head>
 <body>
@@ -47,73 +48,43 @@
         </div>
     </section>
 
-    <section class="service">
-        <h2 class="service-title">Relaxing Massage</h2>
-        <p class="service-description">A soothing treatment to melt away stress and tension.</p>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="../../imgs/service/massage1.jpg" alt="Massage Room"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/massage2.jpg" alt="Massage Therapist"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/massage3.jpg" alt="Massage Products"></div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
+    <!-- Services will be dynamically inserted here by JavaScript -->
+    <div id="services-container"></div>
 
-    <!-- Invigorating Sauna -->
-    <section class="service">
-        <h2 class="service-title">Invigorating Sauna</h2>
-        <p class="service-description">Detoxify your body and relax your muscles in our premium sauna.</p>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="../../imgs/service/sauna1.jpg" alt="Sauna Room"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/sauna2.jpg" alt="Sauna Rocks"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/sauna3.jpg" alt="Steam Sauna"></div>
+    <section class="reservation-form">
+        <h2 class="form-title">Create Unforgettable Moments</h2>
+        <form id="spaBooking">
+            <!-- Service Selection -->
+            <div class="form-group">
+                <select class="form-input" id="serviceSelect" required>
+                    <option value="" disabled selected>Select Your Experience</option>
+                    <!-- Options will be inserted here by JavaScript -->
+                </select>
             </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
-
-    <!-- Private Beach -->
-    <section class="service">
-        <h2 class="service-title">Exclusive Private Beach</h2>
-        <p class="service-description">Unwind on our pristine private beach with serene views.</p>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="../../imgs/service/beach1.jpg" alt="Private Beach"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/beach2.jpg" alt="Beach Watercraft"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/beach3.jpg" alt="Sunset Beach"></div>
+    
+            <!-- Date Range -->
+            <div class="form-group dual-date">
+                <div class="date-wrapper">
+                    <label>Start Date</label>
+                    <input type="date" class="form-input" id="startDate" required>
+                </div>
+                <div class="date-wrapper">
+                    <label>End Date</label>
+                    <input type="date" class="form-input" id="endDate" required>
+                </div>
             </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
-
-    <!-- Refreshing Pool -->
-    <section class="service">
-        <h2 class="service-title">Refreshing Pool</h2>
-        <p class="service-description">Swim in our crystal-clear pool and relax in the sun.</p>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="../../imgs/service/pool1.jpg" alt="Pool View"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/pool2.jpg" alt="Poolside Relaxing"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/pool3.jpg" alt="Pool Far View"></div>
+    
+            <!-- Dynamic Time Selection -->
+            <div class="time-selection" id="timeSelection">
+                <h3>Available Time Slots</h3>
+                <select class="form-input" id="timeSlotSelect">
+                    <option value="" disabled selected>Select a time slot</option>
+                    <!-- Slots will be inserted here by JavaScript -->
+                </select>
             </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
-
-    <!-- Modern Gym -->
-    <section class="service">
-        <h2 class="service-title">Modern Gym</h2>
-        <p class="service-description">Stay in shape with our fully equipped gym.</p>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="../../imgs/service/gym1.jpg" alt="Gym Equipment"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/gym2.jpg" alt="Workout Session"></div>
-                <div class="swiper-slide"><img src="../../imgs/service/gym3.jpg" alt="Gym"></div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
+    
+            <button type="submit" class="submit-btn" id="reserve-btn">RESERVE YOUR EXPERIENCE</button>
+        </form>
     </section>
 
     <footer class="footer" id="contact">
@@ -160,6 +131,5 @@
     <p class="rights-reserved">2025 © Hilysa. All rights reserved.</p>
 
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 </body>
 </html>
